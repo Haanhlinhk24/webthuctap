@@ -29,7 +29,7 @@ const findProduct = (req, res, next) => {
 const createProduct =  (req, res, next) => {
     const { name, type ,price ,countInStock, rating,description} = req.body;
   
-    const image_url = req.file ? `app/public/uploads/${req.file.filename}` : "";
+    const image_url = req.file ? `/uploads/${req.file.filename}` : "";
     ProductModel.findOne({
       name: name,
     })

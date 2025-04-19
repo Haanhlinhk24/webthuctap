@@ -1,4 +1,4 @@
-import { get, post, del, put } from "../utils/request";
+import {get, post, del, put, postFormData} from "../utils/request";
 
 
 
@@ -35,8 +35,8 @@ export const getProductList = async () => {
   return result;
 };
 
-export const createProduct = async (data) => {
-  const result = await post("products", data);
+export const createProduct = async (formData) => {
+  const result = await postFormData("products", formData);
   return result;
 };
 

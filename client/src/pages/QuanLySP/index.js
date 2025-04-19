@@ -17,7 +17,8 @@ function QuanLySanPham() {
   const [pagination, setPagination] = useState({
     current: 1,
     pageSize: 5,
-  });  
+  });
+  const API_BASE_URL = process.env.REACT_APP_BACKEND_URL?? "http://localhost:3002";
   const handleTableChange = (pagination) => {
     setPagination(pagination);
   };
@@ -58,12 +59,11 @@ function QuanLySanPham() {
       dataIndex: "image",
       key: "image",
       render: (record) => {
-        const iconUrl = record?.[0]
-          ? `${process.env.REACT_APP_BACKEND_URL}${record}`
-          : "example.jpg";
+          console.log(record)
+        const iconUrl = record?.[0]? `${API_BASE_URL}${record}`: "example.jpg";
           return (
             <Image
-              src={record}
+              src={iconUrl}
               alt="Category"
               style={{
                 width: "60px",
