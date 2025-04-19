@@ -32,6 +32,23 @@ export const post = async (path, data) => {
   return result;
 };
 
+export const postFormData = async (path, data) => {
+  const response = await fetch(API_DOMAIN + path, {
+    method: "POST",
+    body: data, // truyền trực tiếp FormData
+  });
+  return await response.json();
+};
+
+export const putFormData = async (path, data) => {
+  const response = await fetch(API_DOMAIN + path, {
+    method: "PUT",
+    body: data, // truyền trực tiếp FormData
+  });
+  return await response.json();
+};
+
+
 export const del = async (path)=>{
     const response = await fetch(API_DOMAIN + path, {
       method: "DELETE",

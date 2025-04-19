@@ -22,19 +22,18 @@ function CreateProduct(props) {
       description: `Tạo sản phẩm thành công`,
       duration: 2,
     });
-    //form.resetFields();
-    const data = {
-      "name": e.name,
-      "image": file,
-      "type": e.type,
-      "price": e.price,
-      "countInStock": e.countInStock,
-      "rating": e.rating,
-      "description": e.description,
-    };
+
+    const formData = new FormData();
+    formData.append("name", e.name);
+    formData.append("image", file); // QUAN TRỌNG: phải dùng FormData cho file
+    formData.append("type", e.type);
+    formData.append("price", e.price);
+    formData.append("countInStock", e.countInStock);
+    formData.append("rating", e.rating);
+    formData.append("description", e.description);
     
-    const response = await createProduct(data);
-    console.log(response)
+    const response = await createProduct(formData);
+
     if (response && response.status === "success") {
       handleCancel();
       onReload();
@@ -43,6 +42,7 @@ function CreateProduct(props) {
         description: `Tạo sản phẩm thành công`,
         duration: 2,
       });
+
       form.resetFields();
       setFile(null);
     }

@@ -2,7 +2,12 @@ const ProductModel = require("../models/ProductModel");
 
 // hiển thị tất cả sản phẩm
 const getAll = (req, res, next) => {
-    ProductModel.find({})
+    let type = req.query.type ?? "";
+    let filter = {};
+    if (type != "") {
+      filter= {type};
+    }
+    ProductModel.find(filter)
       .then((data) => {
         res.json(data)
       })
@@ -29,7 +34,7 @@ const findProduct = (req, res, next) => {
 const createProduct =  (req, res, next) => {
     const { name, type ,price ,countInStock, rating,description} = req.body;
   
-    const image_url = req.file ? `app/public/uploads/${req.file.filename}` : "";
+    const image_url = req.file ? `/uploads/${req.file.filename}` : "";
     ProductModel.findOne({
       name: name,
     })
@@ -60,14 +65,9 @@ const createProduct =  (req, res, next) => {
 }
 
 const updateProduct =(req,res,next)=>{
-     var _id = req.params.id;
-     var name = req.body.name;
-     var image = req.body.image;
-     var type = req.body.type;
-     var price = req.body.price;
-     var countInStock = req.body.countInStock;
-     var rating = req.body.rating;
-     var description = req.body.description;
+    let _id = req.params.id;
+    let { name, type, price, countInStock, rating, description } = req.body;
+    let image = req.file ? `/uploads/${req.file.filename}` : req.body.image;
      ProductModel.findByIdAndUpdate(_id, {
        name: name,
        image: image,
@@ -79,9 +79,9 @@ const updateProduct =(req,res,next)=>{
      })
        .then((data) => {
          if (data) {
-           res.json("Update thanh cong nhe");
+           res.json("success");
          } else {
-           res.json("Update that bai");
+           res.json("error");
          }
        })
        .catch((err) => {
