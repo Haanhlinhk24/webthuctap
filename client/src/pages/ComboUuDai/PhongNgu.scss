@@ -1,0 +1,96 @@
+.phongngu-container {
+    padding: 20px;
+  }
+  
+  .phongngu-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #B87209;
+    margin-bottom: 20px;
+  }
+  
+  .category-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 30px;
+  }
+  
+  .category-buttons button {
+    background-color: #B87209;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .category-buttons button:hover {
+    background-color: #a30000;
+  }
+  
+  .sanpham-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+  }
+  
+  .sanpham-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .sanpham-card:hover {
+    transform: scale(1.02);
+  }
+  
+  .image-wrapper {
+    position: relative;
+  }
+  
+  .image-wrapper img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .label {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: red;
+    color: white;
+    padding: 4px 8px;
+    font-size: 12px;
+    border-radius: 4px;
+  }
+  
+  .info {
+    padding: 10px;
+  }
+  
+  .info h3 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  
+  .gia-moi {
+    color: #d10000;
+    font-weight: bold;
+  }
+  
+  .gia-cu {
+    text-decoration: line-through;
+    color: gray;
+    font-size: 14px;
+    margin-left: 6px;
+  }
+  
+  
+  
+  

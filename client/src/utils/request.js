@@ -19,14 +19,14 @@ export const get = async (path) => {
   return result;
 };
 
-export const post = async (path, option) => {
+export const post = async (path, data) => {
   const response = await fetch(API_DOMAIN + path, {
     method: "POST",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(option), // chuyển sang dạng json
+    body: JSON.stringify(data), // chuyển sang dạng json
   });
   const result = await response.json();
   return result;
@@ -39,7 +39,7 @@ export const del = async (path)=>{
   const result = await response.json();
   return result;
 }
-export const patch = async(path,option)=>{
+export const patch = async(path, option)=>{
      const response = await fetch(API_DOMAIN + path, {
        method: "PATCH",
        headers: {
@@ -50,4 +50,17 @@ export const patch = async(path,option)=>{
      });
      const result = await response.json();
      return result;
+}
+
+export const put = async(path, option)=>{
+  const response = await fetch(API_DOMAIN + path, {
+    method: "PUT",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(option), // chuyển sang dạng json
+  });
+  const result = await response.json();
+  return result;
 }

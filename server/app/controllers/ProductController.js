@@ -27,11 +27,9 @@ const findProduct = (req, res, next) => {
 
 // tạo sản phẩm
 const createProduct =  (req, res, next) => {
-    const { name, image, type ,price ,countInStock, rating,description} = req.body;
-    console.log( name, image, type ,price ,countInStock, rating,description)
-    if (!name || !image || !type || !price || !countInStock ||!rating || !description ) {
-      return res.json("input đầu vào thiếu trường bắt buộc");
-    }
+    const { name, type ,price ,countInStock, rating,description} = req.body;
+  
+    const image_url = req.file ? `app/public/uploads/${req.file.filename}` : "";
     ProductModel.findOne({
       name: name,
     })
@@ -41,7 +39,7 @@ const createProduct =  (req, res, next) => {
         } else {
           return ProductModel.create({
             name: name,
-            image: image,
+            image: image_url,
             type: type,
             price: price,
             countInStock: countInStock,

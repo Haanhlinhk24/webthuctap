@@ -21,20 +21,20 @@ function MenuSider() {
       className:"menu-link",
     },
     {
-      key: "/info-company",
+      key: "/quanlysanpham",
       label: (
-        <Link to="/info-company" >
-          Thông tin người dùng
+        <Link to="/quanlysanpham" >
+          Quản lý sản phẩm
         </Link>
       ),
-      icon: <UserOutlined />,
+      icon: <AlignLeftOutlined />,
       className:"menu-link",
     },
     {
-      key: "/job-manage",
+      key: "/quanlynguoidung",
       label: (
-        <Link to="/job-manage" >
-          Thông tin sản phẩm
+        <Link to="/quanlynguoidung" >
+          Quản lý người dùng
         </Link>
       ),
       icon: <AlignLeftOutlined />,

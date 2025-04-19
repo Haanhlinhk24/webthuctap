@@ -4,8 +4,14 @@ import { getDetailProduct } from "../../services/productService";
 import { Col, Image, Rate, Row } from "antd";
 import "./ProductDetail.scss"
 import { MinusOutlined, PlusOutlined } from "@ant-design/icons";
+import { useNavigate } from "react-router-dom";
+
 
 function ChiTietSP() {
+  const navigate = useNavigate();
+  const handleBuyNow = () => {
+    navigate("/thanhtoan"); // Hoặc trang bạn muốn chuyển đến
+  };
   const [product, setProduct] = useState()
   const param = useParams();
 
@@ -19,8 +25,11 @@ function ChiTietSP() {
 
   console.log(product)
 
+
+  
   const inputRef = useRef();
   const handleAddToCart = () => {
+    navigate("/giohang");
 
   };
 
@@ -87,7 +96,7 @@ function ChiTietSP() {
                 </div>
                 <div className="productDetail__content3">
                   <strong>Tiết kiệm:</strong>
-                  <span> 105,000đ</span>
+                  <span> 300,000đ</span>
                 </div>
                 <div>
                   <strong>Tình trạng:</strong>
@@ -110,13 +119,17 @@ function ChiTietSP() {
                   </div>
                 </div>
                 <div className="productDetail__content4">
-                  <button
+                  
+                  <button                 
                     className="productDetail__addcart"
                     onClick={handleAddToCart}
                   >
                     Thêm vào giỏ hàng
                   </button>
-                  <button className="productDetail__buynow">Mua ngay</button>
+
+
+
+                  <button className="productDetail__buynow"    onClick={handleBuyNow}>Mua ngay</button>
                 </div>
               </div>
             </Col>

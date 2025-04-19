@@ -14,10 +14,14 @@ var userRouter= require('./app/routes/UserRoute')
 app.use("/api/user", userRouter);
 
 var productRouter = require('./app/routes/ProductRoute')
-app.use("/api/product", productRouter);
+app.use("/api/products", productRouter);
 
 // var categoryRouter = require('./app/routes/CategoryRoute')
 // app.use("/api/category", categoryRouter);
+
+app.use("/", express.static(path.join("./app/public")));
+
+app.use("/uploads", express.static(path.join("./app/public")))
 
 app.get('/',(req,res,next)=>{
     res.send("Vui ve");

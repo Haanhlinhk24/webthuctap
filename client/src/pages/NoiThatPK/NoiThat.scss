@@ -1,0 +1,51 @@
+.lien {
+    font-weight: bold;
+    color: #B87209;
+    font-weight: bold;
+    font-size: 20px;
+  }
+  .category-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 30px;
+  }
+  .phongngu-container {
+    padding: 20px;
+  }
+  
+  .phongngu-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #B87209;
+    margin-bottom: 20px;
+  }
+  .category-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+  
+    .category-button {
+      padding: 10px 14px;
+      background-color: #B87209;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+  
+      &.active {
+        background-color: #B87209;
+      }
+    }
+  }
+  
+  .product-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    justify-content: center;
+  }
+  
+
+

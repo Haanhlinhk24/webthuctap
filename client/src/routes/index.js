@@ -15,6 +15,10 @@ import GioiThieu from "../pages/GioiThieu";
 import PhongNgu from "../pages/NoiThatPN";
 import PhongKhach from "../pages/NoiThatPK";
 import ChiTietSP from "../pages/ChitietSP";
+import QuanLySanPham from "../pages/QuanLySP";
+import PhongTho from "../pages/NoiThatPT";
+import GioHang from "../pages/GioHang";
+import Quanlynguoidung from "../pages/Quanlynguoidung";
 
 export const routes = [
   {
@@ -26,8 +30,8 @@ export const routes = [
         element: <Home />,
       },
       {
-        path: "combouudai",
-        element: <ComboUuDai />,
+        path: "phongtho",
+        element: <PhongTho />,
       },
       {
         path: "products",
@@ -71,6 +75,17 @@ export const routes = [
         path: "chitiet/:id",
         element: <ChiTietSP />
       },
+      {
+        path: "chitiet/:id",
+        element: <ChiTietSP />
+      },
+
+      {
+        path: "giohang",
+        element: <GioHang />
+      },
+
+
     ],
   },
   // private
@@ -84,6 +99,14 @@ export const routes = [
             path: "admin",
             element: <Dashboard />,
           },
+          {
+            path: "quanlysanpham",
+            element: <QuanLySanPham />,
+          },
+          {
+            path: "quanlynguoidung",
+            element: <Quanlynguoidung />,
+          }
 
 
         ],

@@ -21,6 +21,12 @@ function HeaderLayout() {
   const currentData = useSelector((state) => state.currentDataReducer);
   const token = localStorage.getItem("access_token");
 
+
+  const navLinkActive = (e) => {
+    return e.isActive ? "menu__link menu__link--active" : "menu__link";
+  };
+
+
   const items = [
     {
       key: '1',
@@ -81,7 +87,7 @@ function HeaderLayout() {
            <img
             src={logo2}
             alt="logo2"
-            style={{ width: "auto", height: "100px" }} // Reduced height for better alignment
+            style={{ width: "auto", height: "50px" }} // Reduced height for better alignment
           /> 
        
         </div>
@@ -128,8 +134,11 @@ function HeaderLayout() {
               </div>
             )}
           </div>
-
+         
+       
+            
           <div style={{ display: 'flex', alignItems: 'center',    }}>
+        
             <Badge count={5}>
               <ShoppingCartOutlined
                 style={{
@@ -142,7 +151,16 @@ function HeaderLayout() {
                 }}
               />
             </Badge>
-            <span className="fontchu">Giỏ hàng</span>
+            <li>
+                        <NavLink to="/giohang" className={navLinkActive}>
+                        
+                           
+                     <div className="fontchu">Giỏ Hàng</div>
+                        </NavLink>
+              </li>
+
+
+           
           </div>
         </div>
       </div>

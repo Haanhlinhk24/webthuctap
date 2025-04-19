@@ -5,7 +5,7 @@ import "./MenuHeader.scss";
 import { IoMdHome } from "react-icons/io";
 import { IoMdMail } from "react-icons/io";
 import { FiFileText } from "react-icons/fi";
-import { FaSalesforce } from "react-icons/fa";
+import { BsBank } from "react-icons/bs";
 import { BiBed } from "react-icons/bi";
 import { BiChair } from "react-icons/bi";
 
@@ -28,12 +28,12 @@ function MenuHeader() {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/combouudai" className={navLinkActive}>
+            <NavLink to="/phongtho" className={navLinkActive}>
             <div>
-                <FaSalesforce  size={20}/>
+            <BsBank  size={20}/>
               </div>
               <div>
-              Com bo ưu đãi
+              Nội thất phòng thờ
               </div>
             </NavLink>
           </li>

@@ -9,6 +9,7 @@ import {
   LogoutOutlined,
 } from "@ant-design/icons";
 import "./LayoutAdmin.scss"
+import logo2 from "../../assets/images/logo2.png";
 import { Link, Outlet } from "react-router-dom";
 import MenuSider from "../../components/MenuSider";
 const { Header, Footer, Sider, Content } = Layout;
@@ -19,9 +20,9 @@ function LayoutAdmin() {
       <Layout className="layout-default">
         <Sider className="sideradmin" theme="light" width="auto">
           <img
-            src={logo}
-            alt="logo"
-            style={{ width: "160px", height: "65px" }}
+            src={logo2}
+            alt="Logo"
+            style={{ width: "200px", height: "40x" }}
           />
           <MenuSider />
         </Sider>
@@ -64,7 +65,7 @@ function LayoutAdmin() {
             }}
           >
             {" "}
-            copyright @2024 by NgocTien
+            copyright @2025 by Diep Ngoc
           </Footer>
         </Layout>
       </Layout>

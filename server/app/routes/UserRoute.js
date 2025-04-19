@@ -18,7 +18,7 @@ router.post('/register',register);
 router.post('/login',postlogin);
 router.put('/update-user/:id',updateuser)
 router.delete('/delete-user/:id',authMiddleWare,deleteuser)
-router.get("/getall",authMiddleWare, getalluser);
+router.get("/getall", getalluser);
 router.get("/get-detail/:id", authMiddleWare, getdetailuserbyid);
 router.get("/check-user", checkUser);
 router.get("/get-current", verifyToken, getCurrent);

@@ -1,0 +1,136 @@
+.giohang-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .breadcrumb {
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .giohang-title {
+    font-size: 24px;
+    margin: 20px 0;
+    color: #B87209;
+  }
+  
+  .giohang-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+  }
+  
+  .giohang-table th,
+  .giohang-table td {
+    border-bottom: 1px solid #ddd;
+    padding: 12px;
+  }
+  
+  .giohang-img {
+    width: 100px;
+    height: auto;
+  }
+  
+  .qty-btn {
+    padding: 4px 10px;
+    margin: 0 5px;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    cursor: pointer;
+  }
+  
+  .qty-number {
+    min-width: 20px;
+    display: inline-block;
+  }
+  
+  .delete-btn {
+    background-color: transparent;
+    color: rgb(244, 170, 10);
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .giohang-footer {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .total-price {
+    font-weight: bold;
+    font-size: 18px;
+    color: #B87209;
+  }
+  
+  .giohang-actions .back-btn,
+  .giohang-actions .buy-btn {
+    padding: 10px 20px;
+    border: none;
+    text-decoration: none;
+    margin-left: 10px;
+    border-radius: 4px;
+  }
+  
+  .back-btn {
+    background-color: #f5f5f5;
+    color: #B87209;
+  }
+  
+  .buy-btn {
+    background-color: #B87209;
+    color: white;
+  }
+  .lien {
+    font-weight: bold;
+    color: #B87209;
+    font-weight: bold;
+    font-size: 20px;
+  }
+  .category-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 30px;
+  }
+  .phongngu-container {
+    padding: 20px;
+  }
+  
+  .phongngu-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #B87209;
+    margin-bottom: 20px;
+  }
+  .category-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+  
+    .category-button {
+      padding: 10px 14px;
+      background-color: #B87209;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+  
+      &.active {
+        background-color: #B87209;
+      }
+    }
+  }
+  
+  .product-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    justify-content: center;
+  }
+  
+
+

@@ -29,20 +29,20 @@
         display: flex;
     }
     &__addcart{
-        background-color: #E88697;
+        background-color: #e3b277;
         font-size: 12px;
         padding: 10px;
-        border: 1px solid #E88697;
+        border: 1px solid #e3b277;
         color: white;
         width: 286px;
     }
     &__buynow{
          padding: 10px;
-         border: 1px solid #de1b57;
+         border: 1px solid #B87209;
         width: 286px;
         color: #ffffff;
         transition: all 0.3s ease;
-        background-color: #de1b57;
+        background-color: #B87209;
         &:hover{
             border: 1px solid #000000;
             background-color: #000000;
