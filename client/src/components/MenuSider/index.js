@@ -41,9 +41,9 @@ function MenuSider() {
       className:"menu-link",
     },
     {
-      key: "/cv-manage",
+      key: "/donHang,",
       label: (
-        <Link to="/cv-manage" >
+        <Link to="/donHang" >
           Đơn hàng
         </Link>
       ),

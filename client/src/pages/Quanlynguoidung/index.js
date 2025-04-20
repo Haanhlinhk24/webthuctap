@@ -1,13 +1,23 @@
-import { Button, Form, Input, message, Modal, Table } from "antd";
-import { EditOutlined } from "@ant-design/icons";
+import { Button, notification, Table } from "antd";
 import { useEffect, useState } from "react";
-import { getuserAllnamephone, updateUserById } from "../../services/userService";
+import { getuserAllnamephone } from "../../services/userService";
+import CreateUser from "./CreateUser";
+import DeleteUser from "./DeleteUser";
+import EditUser from "./EditUser";
+import Modal from "antd/lib/modal/Modal";
 
 function Quanlynguoidung() {
   const [userData, setUserData] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [editingUser, setEditingUser] = useState(null);
-  const [form] = Form.useForm();
+  const [notifiapi, contextHolder] = notification.useNotification();
+  const [pagination, setPagination] = useState({
+    current: 1,
+    pageSize: 5,
+  });
+
+  const handleTableChange = (pagination) => {
+    setPagination(pagination);
+  };
 
   const fetchApi = async () => {
     try {
@@ -15,8 +25,12 @@ function Quanlynguoidung() {
       if (response) {
         setUserData(response.reverse());
       }
-    } catch {
-      message.error("Lỗi server");
+    } catch (error) {
+      notifiapi.error({
+        message: "Lỗi",
+        description: "Lỗi khi tải danh sách người dùng",
+        duration: 2,
+      });
     }
   };
 
@@ -24,28 +38,16 @@ function Quanlynguoidung() {
     fetchApi();
   }, []);
 
-  const showEditModal = (record) => {
-    setEditingUser(record);
-    form.setFieldsValue(record);
+  const handleReload = () => {
+    fetchApi();
+  };
+
+  const showModal = () => {
     setIsModalOpen(true);
   };
 
-  const handleEditSubmit = async () => {
-    try {
-      const values = await form.validateFields();
-      const updatedUser = { ...editingUser, ...values };
-
-      const res = await updateUserById(editingUser._id, updatedUser);
-      if (res && res.success) {
-        message.success("Cập nhật thành công");
-        setIsModalOpen(false);
-        fetchApi();
-      } else {
-        message.error("Cập nhật thất bại");
-      }
-    } catch (err) {
-      console.log("Validate Failed", err);
-    }
+  const handleCancel = () => {
+    setIsModalOpen(false);
   };
 
   const columns = [
@@ -65,11 +67,6 @@ function Quanlynguoidung() {
       key: "email",
     },
     {
-      title: "Mật khẩu",
-      dataIndex: "password",
-      key: "password",
-    },
-    {
       title: "Số điện thoại",
       dataIndex: "phone",
       key: "phone",
@@ -77,45 +74,62 @@ function Quanlynguoidung() {
     {
       title: "Hành động",
       key: "actions",
-      render: (_, record) => (
-        <Button
-          icon={<EditOutlined />}
-          onClick={() => showEditModal(record)}
-        >
-          Sửa
-        </Button>
-      ),
+      render: (_, record) => {
+        return (
+            <>
+              <EditUser
+                  key={`edit-${record._id}`}
+                  userRow={record}
+                  onReload={handleReload}
+                  notifiapi={notifiapi}
+              />
+              <span> </span>
+              <DeleteUser
+                  key={`delete-${record._id}`}
+                  record={record}
+                  onReload={handleReload}
+                  notifiapi={notifiapi}
+              />
+            </>
+        );
+      },
     },
   ];
 
   return (
-    <>
-      <Table rowKey="_id" dataSource={userData} columns={columns} />
+      <>
+        {contextHolder}
+        <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              marginBottom: "30px",
+            }}
+        >
+          <div style={{ color: "#1a3352", fontSize: "22px", fontWeight: "500" }}>
+            Danh sách người dùng
+          </div>
+          <Button onClick={showModal} className="custom-button">
+            +Tạo người dùng mới
+          </Button>
+        </div>
+        <Table
+            rowKey="_id"
+            dataSource={userData}
+            columns={columns}
+            pagination={pagination}
+            onChange={handleTableChange}
+        />
 
-      <Modal
-        title="Chỉnh sửa người dùng"
-        open={isModalOpen}
-        onCancel={() => setIsModalOpen(false)}
-        onOk={handleEditSubmit}
-        okText="Lưu"
-        cancelText="Hủy"
-      >
-        <Form form={form} layout="vertical">
-          <Form.Item name="name" label="Tên người dùng" rules={[{ required: true, message: 'Vui lòng nhập tên' }]}>
-            <Input />
-          </Form.Item>
-          <Form.Item name="email" label="Email" rules={[{ type: "email", message: 'Email không hợp lệ' }]}>
-            <Input />
-          </Form.Item>
-          <Form.Item name="password" label="Mật khẩu">
-            <Input.Password />
-          </Form.Item>
-          <Form.Item name="phone" label="Số điện thoại">
-            <Input />
-          </Form.Item>
-        </Form>
-      </Modal>
-    </>
+        <Modal
+            title="Tạo người dùng mới"
+            open={isModalOpen}
+            onCancel={handleCancel}
+            footer={null}
+        >
+          <CreateUser onReload={handleReload} handleCancel={handleCancel} />
+        </Modal>
+      </>
   );
 }
 

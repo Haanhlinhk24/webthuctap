@@ -16,7 +16,7 @@ const UserSchema = new Schema(
     password: {
       type: String,
       require: true,
-    }, 
+    },
     isAdmin: {
       type: String,
       require: true,
@@ -27,11 +27,9 @@ const UserSchema = new Schema(
     },
     access_token: {
       type: String,
-      require: true,
     },
     refresh_token: {
       type: String,
-      require: true,
     },
   },
   {

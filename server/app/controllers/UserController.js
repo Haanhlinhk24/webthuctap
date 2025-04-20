@@ -4,17 +4,17 @@ const saltRounds = 10;
 const jwt = require('jsonwebtoken');
 
 const register = (req, res, next) => {
-  const { name, password,comfirmpassword, email,phone, } = req.body;
+  const { name, password,confirmPassword, email,phone, } = req.body;
    let encryptedPassword = "";
    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
    const isCheckEmail = emailRegex.test(email)
-   if(!name || !email || !password ||!comfirmpassword ||!phone){
+   if(!name || !email || !password ||!confirmPassword ||!phone){
       return res.json("input đầu vào thiếu trường bắt buộc");
    }
    else if(!isCheckEmail){
     return res.json("chuỗi email đầu vào không đúng định dạng");
    }
-  if(password!=comfirmpassword){
+  if(password!==confirmPassword){
     return res.status(200).json("Mật khẩu nhập lại không trùng khớp với mật khẩu")
   }
    bcrypt.genSalt(saltRounds, (err, salt) => {
@@ -36,7 +36,7 @@ const register = (req, res, next) => {
          })
          .then((data) => {
            if (data) {
-             res.json("tạo tài khoản thành công");
+             res.json("success");
            }
          })
          .catch((err) => {
@@ -95,7 +95,7 @@ const updateuser = async(req,res,next)=>{
       res.json("user ko tồn tại")
      }
      const updateUser = await UserModel.findByIdAndUpdate(userId,data,{new:true});
-     res.json(updateUser)
+     res.json("success")
   }
  catch (error) {
         res.status(500).json({ error: error.message });
@@ -109,7 +109,7 @@ const deleteuser=(req,res,next)=>{
     _id: userId,
   })
     .then((data) => {
-      res.json("Xoa User thanh cong");
+      res.json("success");
     })
     .catch((err) => {
       res.status(500).json("Loi server");

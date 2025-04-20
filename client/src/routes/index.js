@@ -19,6 +19,8 @@ import QuanLySanPham from "../pages/QuanLySP";
 import PhongTho from "../pages/NoiThatPT";
 import GioHang from "../pages/GioHang";
 import Quanlynguoidung from "../pages/Quanlynguoidung";
+import DonHang from "../pages/QuanLydonHang";
+import Quanlydonhang from "../pages/QuanLydonHang";
 
 export const routes = [
   {
@@ -106,6 +108,10 @@ export const routes = [
           {
             path: "quanlynguoidung",
             element: <Quanlynguoidung />,
+          },
+          {
+            path: "donHang",
+            element: <Quanlydonhang />,
           }
 
 

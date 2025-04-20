@@ -17,9 +17,9 @@ var router = express.Router();
 router.post('/register',register);
 router.post('/login',postlogin);
 router.put('/update-user/:id',updateuser)
-router.delete('/delete-user/:id',authMiddleWare,deleteuser)
+router.delete('/delete-user/:id',deleteuser)
 router.get("/getall", getalluser);
-router.get("/get-detail/:id", authMiddleWare, getdetailuserbyid);
+router.get("/get-detail/:id", getdetailuserbyid);
 router.get("/check-user", checkUser);
 router.get("/get-current", verifyToken, getCurrent);
 module.exports=router
